@@ -9,9 +9,9 @@ var linha = 10;
 var coluna = 10;
 var marcados = [];
 alert();
-linha = get('linha') == undefined ? get('linha') : 10;
-coluna = get('coluna') == undefined ? get('linha') : 10;
-marcados = get('marcados') == undefined ? get('marcados').split(',') : [];
+linha = get('linha') != undefined | get('linha') == ''? get('linha') : 10;
+coluna = get('coluna') != undefined | get('coluna') == '' ? get('coluna') : 10;
+marcados = get('marcados') != undefined | get('marcados') == '' ? get('marcados').split(',') : [];
 
 document.getElementById("tabela").appendChild(criarTabela(gerarTabela(linha,coluna), marcados));
 
