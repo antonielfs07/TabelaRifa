@@ -5,15 +5,39 @@
 //     [3,    "pedro",    10],
 //     [4,    "henrique", 10]
 //   ]));
+var linha = 10;
+var coluna = 10;
+var marcados = [];
+alert();
+linha = get('linha') == undefined ? get('linha') : 10;
+coluna = get('coluna') == undefined ? get('linha') : 10;
+marcados = get('marcados') == undefined ? get('marcados').split(',') : [];
 
-document.getElementById("tabela").appendChild(criarTabela(gerarTabela(10,10), [1, 5, 10, 100]));
+document.getElementById("tabela").appendChild(criarTabela(gerarTabela(linha,coluna), marcados));
 
-html2canvas($("#widget"), {
-  onrendered: function(canvas) {
-      $("#btnSave").attr("href", canvas.toDataURL());
-  }
-});
 
+function get(name){
+  if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+     return decodeURIComponent(name[1]);
+}
+
+function downloadURI(uri, name) {
+  var link = document.createElement("a");
+
+  link.download = name;
+  link.href = uri;
+  document.body.appendChild(link);
+  link.click();
+  clearDynamicLink(link); 
+}
+
+function PrintDiv(id) {
+  var element = document.getElementById(id);
+  html2canvas(element).then(function (canvas) {
+      var myImage = canvas.toDataURL();
+      downloadURI(myImage, "TabelaRifa.png");
+  });
+}
 
 
 function criarTabela(conteudo, numerosEscolhidos) {

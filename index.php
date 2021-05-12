@@ -18,6 +18,8 @@
             <h3>Sorteio será dia 12/06</h3>
         </div>
     </div>
+    <script src="assets/html2canvas.min.js"></script>
     <script src="assets/index.js"></script>
+    <button onclick="PrintDiv('folheto')">Exportar</button>
 </body>
 </html>
